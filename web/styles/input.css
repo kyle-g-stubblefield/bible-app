@@ -5,3 +5,4 @@
 	themes: cyberpunk --default, sunset --prefersdark;
 }
 */
+@custom-variant dark (&:where(.dark, .dark *));
