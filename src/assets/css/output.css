@@ -6,11 +6,18 @@
     'Noto Color Emoji';
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace;
+    --color-violet-100: oklch(0.943 0.029 294.588);
     --color-violet-200: oklch(0.894 0.057 293.283);
+    --color-violet-800: oklch(0.432 0.232 292.759);
     --color-violet-950: oklch(0.283 0.141 291.089);
     --color-stone-200: oklch(0.923 0.003 48.717);
+    --color-stone-300: oklch(0.869 0.005 56.366);
+    --color-stone-600: oklch(0.444 0.011 73.639);
+    --color-stone-700: oklch(0.374 0.01 67.558);
     --color-stone-800: oklch(0.268 0.007 34.298);
     --spacing: 0.25rem;
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
     --text-3xl: 1.875rem;
     --text-3xl--line-height: calc(2.25 / 1.875);
     --font-weight-bold: 700;
@@ -161,6 +168,33 @@
   }
 }
 @layer utilities {
+  .container {
+    width: 100%;
+    @media (width >= 40rem) {
+      max-width: 40rem;
+    }
+    @media (width >= 48rem) {
+      max-width: 48rem;
+    }
+    @media (width >= 64rem) {
+      max-width: 64rem;
+    }
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
+  }
+  .mx-auto {
+    margin-inline: auto;
+  }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
+  .flex {
+    display: flex;
+  }
   .hidden {
     display: none;
   }
@@ -173,8 +207,56 @@
   .w-5 {
     width: calc(var(--spacing) * 5);
   }
+  .max-w-8\/10 {
+    max-width: calc(8/10 * 100%);
+  }
+  .items-center {
+    align-items: center;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+  }
+  .border-b-3 {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 3px;
+  }
+  .border-violet-200 {
+    border-color: var(--color-violet-200);
+  }
+  .border-violet-800 {
+    border-color: var(--color-violet-800);
+  }
+  .bg-violet-100 {
+    background-color: var(--color-violet-100);
+  }
   .bg-violet-200 {
     background-color: var(--color-violet-200);
+  }
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
+  }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
+  }
+  .py-4 {
+    padding-block: calc(var(--spacing) * 4);
+  }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
   .text-3xl {
     font-size: var(--text-3xl);
@@ -190,6 +272,21 @@
   .underline {
     text-decoration-line: underline;
   }
+  .dark\:border-stone-300 {
+    &:where(.dark, .dark *) {
+      border-color: var(--color-stone-300);
+    }
+  }
+  .dark\:border-stone-700 {
+    &:where(.dark, .dark *) {
+      border-color: var(--color-stone-700);
+    }
+  }
+  .dark\:bg-stone-700 {
+    &:where(.dark, .dark *) {
+      background-color: var(--color-stone-700);
+    }
+  }
   .dark\:bg-stone-800 {
     &:where(.dark, .dark *) {
       background-color: var(--color-stone-800);
@@ -200,6 +297,20 @@
       color: var(--color-stone-200);
     }
   }
+  .dark\:hover\:bg-stone-600 {
+    &:where(.dark, .dark *) {
+      &:hover {
+        @media (hover: hover) {
+          background-color: var(--color-stone-600);
+        }
+      }
+    }
+  }
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }
 @property --tw-font-weight {
   syntax: "*";
