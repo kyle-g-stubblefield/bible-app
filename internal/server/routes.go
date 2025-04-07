@@ -11,6 +11,7 @@ func (s *Server) RegisterRoutes() http.Handler {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	fileServer := http.FileServer(http.Dir("./src"))
+	r.Get("/api", ApiRequestHandler)
 	r.Handle("/*", fileServer)
 
 	return r
