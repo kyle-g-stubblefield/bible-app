@@ -39,3 +39,21 @@ themeToggleBtn.addEventListener('click', function() {
     }
     
 });
+
+
+function verseLookup() {
+    var verse = document.getElementById("search").value;
+    var url = "/api?verse=" + verse;
+    fetch(url)
+        .then(data => {
+            console.log(data);
+            document.getElementById("verse").innerHTML = data;
+        });
+}
+
+var inputField = document.getElementById('search');
+inputField.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        verseLookup();
+    } 
+});

@@ -86,7 +86,7 @@ func ApiRequestHandler(w http.ResponseWriter, r *http.Request) {
         }
         w.Header().Set("Content-Type", "text/html")
         w.WriteHeader(http.StatusOK)
-        w.Write([]byte("<html><head><meta charset=\"UTF-8\"></head><body>"))
+        //w.Write([]byte("<html><head><meta charset=\"UTF-8\"></head><body>"))
         for _, str := range result.Passages {
                 _, err := w.Write([]byte(str + "\n")) // Add newline for separation
                 if err != nil {
@@ -95,6 +95,6 @@ func ApiRequestHandler(w http.ResponseWriter, r *http.Request) {
                 }
                 log.Println(str)
         }
-        w.Write([]byte("</body></html>"))
+        //w.Write([]byte("</body></html>"))
 
 }
