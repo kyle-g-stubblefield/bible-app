@@ -40,9 +40,12 @@ themeToggleBtn.addEventListener('click', function() {
     
 });
 
-async function loadVerse() {
+async function verseLookup() {
     var verse = document.getElementById("search").value;
-    var url = "/api?verse=" + verse;
+    var headings = "true";
+    var extras = "true";
+    var numbers = "true";
+    var url = "/api?verse=" + verse + "&headings=" + headings + "&extras=" + extras + "&numbers=" + numbers;
     fetch(url)
         .then(response => response.text())
         .then(data => {
@@ -53,6 +56,6 @@ async function loadVerse() {
 var inputField = document.getElementById('search');
 inputField.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        loadVerse();
+        verseLookup();
     }
 });
