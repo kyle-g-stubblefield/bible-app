@@ -32,7 +32,7 @@ h3 {
 }
 
 .footnote {
-	@apply px-1 text-sm dark:text-slate-400 text-violet-600;
+	@apply px-1 text-sm dark:text-stone-400 text-violet-600;
 
 }
 
