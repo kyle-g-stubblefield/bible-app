@@ -26,12 +26,33 @@ flex justify-between items-center dark:text-stone-200">
   <h1 class="text-3xl font-bold underline">
     Hello my Beautiful Students!
   </h1>
-  <input type="checkbox" id="headings" name="headings" checked/>
-  <label for="headings">Headings</label><br>
-  <input type="checkbox" id="extras" name="extras" checked/>
-  <label for="extras">Extras</label><br>
-  <input type="checkbox" id="numbers" name="numbers" checked/>
-  <label for="numbers">Numbers</label><br>
+<div class="flex items-center gap-x-3 pb-1">
+  <label for="headings" class="relative inline-block w-11 h-5 cursor-pointer">
+    <input type="checkbox" id="headings" class="peer sr-only" checked/>
+    <span class="absolute inset-0 bg-violet-300 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-violet-600 dark:bg-stone-700 dark:peer-checked:bg-stone-400 peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
+    <span class="absolute top-1/2 start-0.5 -translate-y-1/2 size-5 bg-violet-100 rounded-full shadow-xs transition-transform duration-200 ease-in-out peer-checked:translate-x-full dark:bg-stone-400 dark:peer-checked:bg-stone-100"></span>
+  </label>
+  <label for="headings">Headings</label>
+</div>
+<div class="flex items-center gap-x-3 pb-1">
+  <label for="numbers" class="relative inline-block w-11 h-5 cursor-pointer">
+    <input type="checkbox" id="numbers" class="peer sr-only" checked/>
+    <span class="absolute inset-0 bg-violet-300 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-violet-600 dark:bg-stone-700 dark:peer-checked:bg-stone-400 peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
+    <span class="absolute top-1/2 start-0.5 -translate-y-1/2 size-5 bg-violet-100 rounded-full shadow-xs transition-transform duration-200 ease-in-out peer-checked:translate-x-full dark:bg-stone-400 dark:peer-checked:bg-stone-100"></span>
+  </label>
+  <label for="numbers">Numbers</label>
+</div>
+<div class="flex items-center gap-x-3 pb-1">
+  <label for="extras" class="relative inline-block w-11 h-5 cursor-pointer">
+    <input type="checkbox" id="extras" class="peer sr-only" checked/>
+    <span class="absolute inset-0 bg-violet-300 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-violet-600 dark:bg-stone-700 dark:peer-checked:bg-stone-400 peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
+    <span class="absolute top-1/2 start-0.5 -translate-y-1/2 size-5 bg-violet-100 rounded-full shadow-xs transition-transform duration-200 ease-in-out peer-checked:translate-x-full dark:bg-stone-400 dark:peer-checked:bg-stone-100"></span>
+  </label>
+  <label for="extras">Extras</label>
+</div>
+
+
+
   <div id="verse"></div>
 </main>
 
