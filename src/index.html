@@ -7,9 +7,9 @@
   <script src="/assets/js/head.js"></script>
   <title>Bible App</title>
 </head>
-<body class="dark:bg-stone-800 dark:text-stone-200 bg-violet-100 text-violet-950 justify-center">
-<nav class="dark:border-stone-700 border-violet-200 border-b-3
-flex justify-between items-center dark:text-stone-200">
+<body class="flex dark:bg-stone-800 dark:text-stone-200 bg-violet-100 text-violet-950 justify-center">
+<nav class="fixed top-0 left-0 right-0 z-50 min-w-full dark:border-stone-700 border-violet-200 border-b-3
+flex justify-between items-center dark:text-stone-200 dark:bg-stone-800 bg-violet-100">
 <div class="p-2">
   <input
   class="dark:bg-stone-700 bg-violet-200 border-2 dark:border-stone-300 border-violet-800 px-2 py-1"
@@ -22,7 +22,7 @@ flex justify-between items-center dark:text-stone-200">
     </button>
 </div>
 </nav>
-<main class="container mx-auto max-w-8/10 py-4">
+<main class="container mx-auto max-w-8/10 pt-16 relative">
   <h1 class="text-3xl font-bold underline">
     Hello my Beautiful Students!
   </h1>
@@ -50,11 +50,11 @@ flex justify-between items-center dark:text-stone-200">
   </label>
   <label for="extras">Extras</label>
 </div>
-
-
-
   <div id="verse"></div>
 </main>
+<sidebar class="pt-16 px-4 border-l-2 border-2 border-stone-200 dark:border-stone-700">
+  This is my Sidebar
+</sidebar>
 
 <script src="/assets/js/main.js"></script>
 </body>

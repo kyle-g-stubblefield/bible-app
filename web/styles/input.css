@@ -37,6 +37,6 @@ h3 {
 }
 
 .chapter-num, .verse-num {
-	@apply dark:bg-stone-800 dark:text-stone-200 bg-violet-100 text-violet-950 text-sm;
+	@apply dark:bg-stone-800 dark:text-stone-200 text-violet-950 text-sm;
 	
 }
