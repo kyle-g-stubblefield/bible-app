@@ -40,3 +40,14 @@ h3 {
 	@apply dark:bg-stone-800 dark:text-stone-200 text-violet-950 text-sm;
 	
 }
+
+
+@layer utilities {
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	.no-scrollbar {
+		-ms-overflow-style: none; 
+		scrollbar-width: none;
+  }
+}
