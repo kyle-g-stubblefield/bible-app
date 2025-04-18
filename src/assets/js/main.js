@@ -40,6 +40,11 @@ themeToggleBtn.addEventListener('click', function() {
     
 });
 
+function useHistory(verse) {
+    document.getElementById("search").value = verse;
+    verseLookup();
+}
+
 async function verseLookup() {
     var verse = document.getElementById("search").value;
     var headings = document.getElementById("headings").checked;
@@ -47,9 +52,10 @@ async function verseLookup() {
     var numbers = document.getElementById("numbers").checked;
     var url = "/api?verse=" + verse + "&headings=" + headings + "&extras=" + extras + "&numbers=" + numbers;
     fetch(url)
-        .then(response => response.text())
+        .then(response => response.json())
         .then(data => {
-            document.getElementById("verse").innerHTML = data;
+            document.getElementById("verse").innerHTML = data.passages.join("");
+            document.getElementById("history").innerHTML += "<div class=\"history-item\">" + data.query + "</div>";
         });
     window.scrollTo(0,0);
 }

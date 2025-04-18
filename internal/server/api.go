@@ -84,17 +84,19 @@ func ApiRequestHandler(w http.ResponseWriter, r *http.Request) {
 	if err := json.Unmarshal(body, &result); err != nil { // Parse []byte to go struct pointer
 		fmt.Println("Can not unmarshal JSON")
 	}
-	w.Header().Set("Content-Type", "text/html")
+	//w.Header().Set("Content-Type", "text/html")
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(result)
 	//w.Write([]byte("<html><head><meta charset=\"UTF-8\"></head><body>"))
-	for _, str := range result.Passages {
-		_, err := w.Write([]byte(str + "\n")) // Add newline for separation
-		if err != nil {
-			http.Error(w, "Error writing to response", http.StatusInternalServerError)
-			return
-		}
+	//for _, str := range result.Passages {
+	//	_, err := w.Write([]byte(str + "\n")) // Add newline for separation
+	//	if err != nil {
+	//		http.Error(w, "Error writing to response", http.StatusInternalServerError)
+	//		return
+	//	}
 		//log.Println(str)
-	}
+	//}
 	//w.Write([]byte("</body></html>"))
 
 }
