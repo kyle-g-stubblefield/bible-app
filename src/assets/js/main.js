@@ -40,6 +40,20 @@ themeToggleBtn.addEventListener('click', function() {
     
 });
 
+
+const searchHistory = new Set();
+
+function addHistoryItem(verse) {
+    document.getElementById("history").innerHTML += "<div class=\"history-item\">" + 
+    "<button class=\"cursor-pointer underline\" onclick=\"useHistory('" + verse + "')\" >" + verse + "</button>"
+    + "</div>";
+}
+
+function createHistory() {
+    document.getElementById("history").innerHTML = "";
+    searchHistory.forEach(addHistoryItem);
+}
+
 function useHistory(verse) {
     document.getElementById("search").value = verse;
     verseLookup();
@@ -55,7 +69,8 @@ async function verseLookup() {
         .then(response => response.json())
         .then(data => {
             document.getElementById("verse").innerHTML = data.passages.join("");
-            document.getElementById("history").innerHTML += "<div class=\"history-item\">" + data.query + "</div>";
+            searchHistory.add(data.query);
+            createHistory();
         });
     window.scrollTo(0,0);
 }
