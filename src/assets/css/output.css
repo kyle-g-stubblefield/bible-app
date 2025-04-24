@@ -225,8 +225,8 @@
   .left-0 {
     left: calc(var(--spacing) * 0);
   }
-  .z-50 {
-    z-index: 50;
+  .z-5 {
+    z-index: 5;
   }
   .container {
     width: 100%;
@@ -276,6 +276,9 @@
   }
   .w-5 {
     width: calc(var(--spacing) * 5);
+  }
+  .w-6 {
+    width: calc(var(--spacing) * 6);
   }
   .w-11 {
     width: calc(var(--spacing) * 11);
@@ -530,6 +533,37 @@ h3 {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+}
+#body-overlay {
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+}
+.real-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  z-index: 6;
+  width: 300px;
+  height: 100%;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 6px 12px rgba(107, 82, 82, 0.3);
+  background-color: white;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  transition: ease 0.2s all;
+}
+body.menu-open #body-overlay {
+  display: block;
+}
+body.menu-open .real-menu {
+  right: 0;
 }
 @property --tw-translate-x {
   syntax: "*";
