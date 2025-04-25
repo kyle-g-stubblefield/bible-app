@@ -9,9 +9,11 @@
     monospace;
     --color-red-500: oklch(63.7% 0.237 25.331);
     --color-red-700: oklch(50.5% 0.213 27.518);
+    --color-amber-600: oklch(66.6% 0.179 58.318);
     --color-violet-100: oklch(94.3% 0.029 294.588);
     --color-violet-200: oklch(89.4% 0.057 293.283);
     --color-violet-300: oklch(81.1% 0.111 293.571);
+    --color-violet-500: oklch(60.6% 0.25 292.717);
     --color-violet-600: oklch(54.1% 0.281 293.009);
     --color-violet-800: oklch(43.2% 0.232 292.759);
     --color-violet-950: oklch(28.3% 0.141 291.089);
@@ -21,6 +23,7 @@
     --color-stone-400: oklch(70.9% 0.01 56.259);
     --color-stone-700: oklch(37.4% 0.01 67.558);
     --color-stone-800: oklch(26.8% 0.007 34.298);
+    --color-stone-900: oklch(21.6% 0.006 56.043);
     --spacing: 0.25rem;
     --container-xs: 20rem;
     --text-sm: 0.875rem;
@@ -524,6 +527,19 @@ h3 {
   &:where(.dark, .dark *) {
     color: var(--color-stone-200);
   }
+}
+.highlighted {
+  background-color: var(--color-amber-600);
+  color: var(--color-stone-900);
+  &:where(.dark, .dark *) {
+    background-color: var(--color-violet-500);
+  }
+  &:where(.dark, .dark *) {
+    color: var(--color-violet-200);
+  }
+}
+.verse a {
+  scroll-margin: 53px;
 }
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {

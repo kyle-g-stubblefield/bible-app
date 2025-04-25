@@ -76,6 +76,7 @@ async function verseLookup() {
             document.getElementById("verse").innerHTML = data.passages.join("");
             searchHistory.add(data.query);
             createHistory();
+            wrapText();
         });
     window.scrollTo(0,0);
 }
@@ -91,7 +92,50 @@ inputField.addEventListener('keydown', function(event) {
     document.getElementById(id).addEventListener('change', verseLookup);
 });
 
+function wrapText() {
+    const anchors = document.querySelectorAll("a.va");
+    anchors.forEach((anchor) => {
+        const wrapper = document.createElement("span");
+        wrapper.classList.add("verse");
+        const verseId = anchor.getAttribute("rel"); // e.g., "v40001007"
+        if (verseId) {
+            wrapper.setAttribute("data-verse", verseId);
+        }
 
+        let current = anchor;
+        const parent = anchor.parentNode;
+
+        // Add the anchor itself to the wrapper
+        wrapper.appendChild(current.cloneNode(true));
+        let next = current.nextSibling;
+
+        // Wrap content until the next anchor
+        while (next && !(next.nodeType === 1 &&
+            (next.matches("a.va")
+                || next.classList.contains("verse-num")
+                || next.tagName.toLowerCase() === "p"))) {
+            const sibling = next.nextSibling;
+            wrapper.appendChild(next);
+            next = sibling;
+        }
+        // Insert the wrapper before the anchor, then remove the original
+        parent.insertBefore(wrapper, anchor);
+        anchor.remove();
+
+        // Add click-to-highlight functionality
+        wrapper.addEventListener("click", () => {
+            wrapper.classList.toggle("highlighted");
+            const id = wrapper.getAttribute("data-verse");
+            if (wrapper.classList.contains("highlighted")) {
+                console.log(`Highlighted: ${id}`);
+                // You can send this ID to your backend
+            } else {
+                console.log(`Unhighlighted: ${id}`);
+                // Remove it from your backend
+            }
+        });
+    });
+}
 
 
 function hasClass(ele, cls) {

@@ -52,6 +52,7 @@ func ApiRequestHandler(w http.ResponseWriter, r *http.Request) {
 	api_key := os.Getenv("API_KEY")
 	params.Add("q", verse)
 	params.Add("include-passage-references", "true")
+	params.Add("include-verse-anchors", "true")
 	params.Add("include-chapter-numbers", numbers)
 	params.Add("include-verse-numbers", numbers)
 	params.Add("include-headings", headings)
