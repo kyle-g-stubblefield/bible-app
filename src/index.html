@@ -18,10 +18,6 @@ flex justify-between items-center dark:text-stone-200 dark:bg-stone-800 bg-viole
   type="text" id="search" name="search" placeholder="John 3:16-21" />
 </div>
 <div class="px-4 items-center">
-  <button id="theme-toggle" type="button" class="items-center">
-    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-  </button>
   <button id="open-menu">
     <svg class="w-6 h-6" fill="currentColor" stroke="currentColor" viewBox="0 0 12 12" enable-background="new 0 0 12 12" id="hamburger" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <g>  
@@ -43,42 +39,63 @@ flex justify-between items-center dark:text-stone-200 dark:bg-stone-800 bg-viole
 
 
 
-  <nav class="real-menu" role="navigation">            
-      <ul>
-          <li><a href="#">Item 1</a></li>
-          <li><a href="#">Item 2</a></li>
-          <li><a href="#">Item 3</a></li>
-      </ul>
+  <nav class="real-menu dark:border-stone-700 border-violet-200 dark:text-stone-200 dark:bg-stone-800 bg-violet-100" role="navigation">            
+    <div class="flex items-center gap-x-3 pb-1">
+      <label for="headings" class="relative inline-block w-11 h-6 cursor-pointer">
+        <input type="checkbox" id="headings" class="peer sr-only" checked/>
+        <span class="absolute inset-0 bg-violet-300 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-violet-600 dark:bg-stone-700 dark:peer-checked:bg-stone-400 peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
+        <span class="absolute top-1/2 start-0.5 -translate-y-1/2 size-5 bg-violet-100 rounded-full shadow-xs transition-transform duration-200 ease-in-out peer-checked:translate-x-full dark:bg-stone-400 dark:peer-checked:bg-stone-100"></span>
+      </label>
+      <label for="headings">Headings</label>
+    </div>
+    <div class="flex items-center gap-x-3 pb-1">
+      <label for="numbers" class="relative inline-block w-11 h-6 cursor-pointer">
+        <input type="checkbox" id="numbers" class="peer sr-only" checked/>
+        <span class="absolute inset-0 bg-violet-300 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-violet-600 dark:bg-stone-700 dark:peer-checked:bg-stone-400 peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
+        <span class="absolute top-1/2 start-0.5 -translate-y-1/2 size-5 bg-violet-100 rounded-full shadow-xs transition-transform duration-200 ease-in-out peer-checked:translate-x-full dark:bg-stone-400 dark:peer-checked:bg-stone-100"></span>
+      </label>
+      <label for="numbers">Numbers</label>
+    </div>
+
+
+
+    <div class="flex items-center gap-x-3 pb-1">
+      <label for="extras" class="relative inline-block w-11 h-6 cursor-pointer">
+        <input type="checkbox" id="extras" class="peer sr-only" checked/>
+        <span class="absolute inset-0 bg-violet-300 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-violet-600 dark:bg-stone-700 dark:peer-checked:bg-stone-400 peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
+        <span class="absolute top-1/2 start-0.5 -translate-y-1/2 size-5 bg-violet-100 rounded-full shadow-xs transition-transform duration-200 ease-in-out peer-checked:translate-x-full dark:bg-stone-400 dark:peer-checked:bg-stone-100"></span>
+      </label>
+      <label for="extras">Extras</label>
+    </div>
+
+
+    <div class="flex items-center gap-x-3 pb-1">
+      <label for="darkmode" class="relative inline-block w-11 h-6 cursor-pointer">
+        <input type="checkbox" id="darkmode" class="peer sr-only" checked/>
+        <span class="absolute inset-0 bg-violet-300 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-violet-600 dark:bg-stone-700 dark:peer-checked:bg-stone-400 peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
+        <span class="absolute top-1/2 start-0.5 -translate-y-1/2 size-5 bg-violet-100 rounded-full shadow-xs transition-transform duration-200 ease-in-out peer-checked:translate-x-full dark:bg-stone-400 dark:peer-checked:bg-stone-100">
+
+
+          <button id="theme-toggle" type="button" class="items-center">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+
+          
+        </span>
+      </label>
+      <label for="darkmode">Dark Mode</label>
+    </div>
+
+
+
   </nav>
 
 
 
 
 
-<div class="flex items-center gap-x-3 pb-1">
-  <label for="headings" class="relative inline-block w-11 h-6 cursor-pointer">
-    <input type="checkbox" id="headings" class="peer sr-only" checked/>
-    <span class="absolute inset-0 bg-violet-300 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-violet-600 dark:bg-stone-700 dark:peer-checked:bg-stone-400 peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
-    <span class="absolute top-1/2 start-0.5 -translate-y-1/2 size-5 bg-violet-100 rounded-full shadow-xs transition-transform duration-200 ease-in-out peer-checked:translate-x-full dark:bg-stone-400 dark:peer-checked:bg-stone-100"></span>
-  </label>
-  <label for="headings">Headings</label>
-</div>
-<div class="flex items-center gap-x-3 pb-1">
-  <label for="numbers" class="relative inline-block w-11 h-6 cursor-pointer">
-    <input type="checkbox" id="numbers" class="peer sr-only" checked/>
-    <span class="absolute inset-0 bg-violet-300 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-violet-600 dark:bg-stone-700 dark:peer-checked:bg-stone-400 peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
-    <span class="absolute top-1/2 start-0.5 -translate-y-1/2 size-5 bg-violet-100 rounded-full shadow-xs transition-transform duration-200 ease-in-out peer-checked:translate-x-full dark:bg-stone-400 dark:peer-checked:bg-stone-100"></span>
-  </label>
-  <label for="numbers">Numbers</label>
-</div>
-<div class="flex items-center gap-x-3 pb-1">
-  <label for="extras" class="relative inline-block w-11 h-6 cursor-pointer">
-    <input type="checkbox" id="extras" class="peer sr-only" checked/>
-    <span class="absolute inset-0 bg-violet-300 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-violet-600 dark:bg-stone-700 dark:peer-checked:bg-stone-400 peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
-    <span class="absolute top-1/2 start-0.5 -translate-y-1/2 size-5 bg-violet-100 rounded-full shadow-xs transition-transform duration-200 ease-in-out peer-checked:translate-x-full dark:bg-stone-400 dark:peer-checked:bg-stone-100"></span>
-  </label>
-  <label for="extras">Extras</label>
-</div>
+
   <div id="verse"></div>
 </main>
 <sidebar class="pt-16 px-4 border-l-2 border-stone-200
