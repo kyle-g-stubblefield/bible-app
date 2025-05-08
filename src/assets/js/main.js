@@ -1,6 +1,25 @@
 var allowHighlighting = false;
 var buttonClicked = "";
 var hightlightColor = "";
+const highlightColors = [
+    "bg-red-600",
+    "bg-orange-600",
+    "bg-amber-600",
+    "bg-yellow-600",
+    "bg-lime-600",
+    "bg-green-600",
+    "bg-emerald-600",
+    "bg-teal-600",
+    "bg-cyan-600",
+    "bg-sky-600",
+    "bg-rose-600",
+    "bg-indigo-600",
+    "bg-violet-600",
+    "bg-fuchsia-600",
+    "bg-pink-600",
+    "bg-blue-600"
+];
+
 var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
 var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
@@ -132,23 +151,39 @@ function wrapText() {
         // Add click-to-highlight functionality
         wrapper.addEventListener("click", () => {
             if (allowHighlighting) {
-            wrapper.classList.toggle(hightlightColor);
+                if (hasClass(wrapper, hightlightColor)) {
+                    removeClass(wrapper, hightlightColor);
+                    //wrapper.children.forEach(child => {
+                    //    if(hasClass)
+                    //})
+                } else {
+                    highlightColors.forEach((color) => {
+                        removeClass(wrapper, color);
+                    });
+                    addClass(wrapper, hightlightColor);
+                }
             }
         });
     });
 }
 
-
-
 function HighlightButtonClicked(me) {
-    console.log(me.id);
+    //console.log(me.id);
+    var buttons = document.querySelectorAll(".highlight-button");
+    buttons.forEach(button => {
+        removeClass(button, "border-stone-200");
+        addClass(button, "border-transparent");
+    });
     if (allowHighlighting && me.id === buttonClicked) {
         allowHighlighting = false;
     } else {
+        removeClass(me, "border-transparent");
+        addClass(me, "border-stone-200");
         buttonClicked = me.id;
         allowHighlighting = true;
         hightlightColor = "bg-" + me.id.split("-")[1] + "-600";
-        console.log(hightlightColor);
+        //console.log(hightlightColor);
+
     }
 }
 

@@ -359,6 +359,9 @@
   .border-stone-200 {
     border-color: var(--color-stone-200);
   }
+  .border-transparent {
+    border-color: transparent;
+  }
   .border-violet-200 {
     border-color: var(--color-violet-200);
   }
