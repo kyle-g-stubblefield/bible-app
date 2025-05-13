@@ -20,6 +20,13 @@ const highlightColors = [
     "bg-blue-600"
 ];
 
+// Highlighted Verses, tuple of verse number and color
+var highlightedVerses = {
+    "v43003016": "bg-lime-600", 
+    "v43003019": "bg-blue-600", 
+    "v43003021": "bg-pink-600"
+};
+
 var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
 var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
@@ -128,6 +135,11 @@ function wrapText() {
             wrapper.setAttribute("data-verse", verseId);
         }
 
+        // Check if the verse is in the highlightedVerses array
+        if (highlightedVerses[verseId]) {
+            console.log("Highlighting verse:", verseId);
+        }
+
         let current = anchor;
         const parent = anchor.parentNode;
 
@@ -185,14 +197,17 @@ function HighlightButtonClicked(me) {
     //console.log(me.id);
     var buttons = document.querySelectorAll(".highlight-button");
     buttons.forEach(button => {
-        removeClass(button, "border-stone-200");
+        removeClass(button, "dark:border-stone-300");
+        removeClass(button, "border-violet-800");
         addClass(button, "border-transparent");
     });
     if (allowHighlighting && me.id === buttonClicked) {
         allowHighlighting = false;
     } else {
         removeClass(me, "border-transparent");
-        addClass(me, "border-stone-200");
+        addClass(me, "dark:border-stone-300");
+        addClass(me, "border-violet-800");
+
         buttonClicked = me.id;
         allowHighlighting = true;
         hightlightColor = "bg-" + me.id.split("-")[1] + "-600";
