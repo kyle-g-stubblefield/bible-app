@@ -150,21 +150,35 @@ function wrapText() {
 
         // Add click-to-highlight functionality
         wrapper.addEventListener("click", () => {
-            if (allowHighlighting) {
-                if (hasClass(wrapper, hightlightColor)) {
-                    removeClass(wrapper, hightlightColor);
-                    //wrapper.children.forEach(child => {
-                    //    if(hasClass)
-                    //})
-                } else {
-                    highlightColors.forEach((color) => {
-                        removeClass(wrapper, color);
-                    });
-                    addClass(wrapper, hightlightColor);
-                }
-            }
+            highlightWrapper(wrapper);
         });
     });
+}
+
+function highlightWrapper(wrapper) {
+    const children = wrapper.children;
+    if (allowHighlighting) {
+        if (hasClass(wrapper, hightlightColor)) {
+            removeClass(wrapper, hightlightColor);
+            for (child of children) {
+                if(hasClass(child, "woc-highlighted")) {
+                    removeClass(child, "woc-highlighted");
+                    addClass(child, "woc");
+                }
+            }
+        } else {
+            highlightColors.forEach((color) => {
+                removeClass(wrapper, color);
+            });
+            addClass(wrapper, hightlightColor);
+            for (child of children) {
+                if(hasClass(child, "woc")) {
+                    removeClass(child, "woc");
+                    addClass(child, "woc-highlighted");
+                }
+            }
+        }
+    }
 }
 
 function HighlightButtonClicked(me) {
