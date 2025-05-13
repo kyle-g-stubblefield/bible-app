@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"mr-stubblefield/bible-app/internal/server"
+	"mr-stubblefield/bible-app/pkg/server"
 	"net/http"
 )
 
