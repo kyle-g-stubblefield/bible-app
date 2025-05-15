@@ -28,6 +28,58 @@ type ApiResponse struct {
 	Passages []string `json:"passages"`
 }
 
+type SearchResponse struct {
+	Page    int `json:"page"`
+	Total   int `json:"total_results"`
+	Results []struct {
+		Reference string `json:"reference"`
+		Content   string `json:"content"`
+	} `json:"results"`
+}
+
+func SearchRequestHandler(w http.ResponseWriter, r *http.Request) {
+	p := r.URL.Query()
+	search := p.Get("search")
+	page := "1"
+	pageSize := "20"
+	params := url.Values{}
+	params.Add("q", search)
+	params.Add("page", page)
+	params.Add("page-size", pageSize)
+	api_key := os.Getenv("API_KEY")
+	baseURL := "https://api.esv.org/v3/passage/search/"
+
+	urlWithParams := baseURL + "?" + params.Encode()
+
+	//log.Println(urlWithParams)
+	req, err := http.NewRequest("GET", urlWithParams, nil)
+	if err != nil {
+		fmt.Println("Error creating request:", err)
+		return
+	}
+
+	req.Header.Add("Authorization", "Token "+api_key)
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		fmt.Println("Error making request:", err)
+		return
+	}
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	var result SearchResponse
+	if err := json.Unmarshal(body, &result); err != nil { // Parse []byte to go struct pointer
+		fmt.Println("Can not unmarshal JSON")
+	}
+	//w.Header().Set("Content-Type", "text/html")
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(result)
+
+}
+
 func ApiRequestHandler(w http.ResponseWriter, r *http.Request) {
 	p := r.URL.Query()
 	verse := "John+3:16-21"

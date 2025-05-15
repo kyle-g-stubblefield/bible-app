@@ -12,6 +12,7 @@ func (s *Server) RegisterRoutes() http.Handler {
 	r.Use(middleware.Logger)
 	fileServer := http.FileServer(http.Dir("./src"))
 	r.Get("/api", ApiRequestHandler)
+	r.Get("/search", SearchRequestHandler)
 	r.Handle("/*", fileServer)
 
 	return r

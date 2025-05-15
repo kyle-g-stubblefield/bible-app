@@ -22,7 +22,7 @@ const highlightColors = [
 
 // Highlighted Verses, tuple of verse number and color
 var highlightedVerses = {
-    "v43003016": "bg-lime-600", 
+    "v43003017": "bg-lime-600", 
     "v43003019": "bg-blue-600", 
     "v43003021": "bg-pink-600"
 };
@@ -135,11 +135,6 @@ function wrapText() {
             wrapper.setAttribute("data-verse", verseId);
         }
 
-        // Check if the verse is in the highlightedVerses array
-        if (highlightedVerses[verseId]) {
-            console.log("Highlighting verse:", verseId);
-        }
-
         let current = anchor;
         const parent = anchor.parentNode;
 
@@ -162,12 +157,34 @@ function wrapText() {
 
         // Add click-to-highlight functionality
         wrapper.addEventListener("click", () => {
-            highlightWrapper(wrapper);
+            highlightWrapper(wrapper, hightlightColor);
+            var verseId = wrapper.getAttribute("data-verse");
+
+            if (highlightedVerses[verseId] && highlightedVerses[verseId] === hightlightColor) {
+                delete highlightedVerses[verseId];
+            } else {
+                highlightedVerses[verseId] = hightlightColor;
+            }
+
         });
+
+
+        // Check if the verse is in the highlightedVerses array
+        if (highlightedVerses[verseId]) {
+            console.log("Highlighting verse:", verseId);
+            allowHighlighting = true;
+            highlightWrapper(wrapper, highlightedVerses[verseId]);
+            allowHighlighting = false;
+        }
+
+
+
     });
+
+
 }
 
-function highlightWrapper(wrapper) {
+function highlightWrapper(wrapper, hightlightColor) {
     const children = wrapper.children;
     if (allowHighlighting) {
         if (hasClass(wrapper, hightlightColor)) {
