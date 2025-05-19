@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	//"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -49,6 +48,9 @@ func SearchRequestHandler(w http.ResponseWriter, r *http.Request) {
 	api_key := os.Getenv("API_KEY")
 	baseURL := "https://api.esv.org/v3/passage/search/"
 
+
+	// ------------ This is the same as the ApiRequestHandler function ------------- \\
+
 	urlWithParams := baseURL + "?" + params.Encode()
 
 	//log.Println(urlWithParams)
@@ -69,7 +71,7 @@ func SearchRequestHandler(w http.ResponseWriter, r *http.Request) {
 	defer resp.Body.Close()
 
 	body, err := io.ReadAll(resp.Body)
-	var result SearchResponse
+	var result SearchResponse // Needs to be changed to SearchResponse from ApiResponse
 	if err := json.Unmarshal(body, &result); err != nil { // Parse []byte to go struct pointer
 		fmt.Println("Can not unmarshal JSON")
 	}
