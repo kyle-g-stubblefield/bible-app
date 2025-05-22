@@ -36,6 +36,32 @@ type SearchResponse struct {
 	} `json:"results"`
 }
 
+type Verse struct {
+	Reference string `json:"reference"`
+	Color     string `json:"color"`
+}
+
+type HighlightedVersesResponse struct {
+	Verses []Verse `json:"verses"`
+} // {verses: [{"reference": "v43003016", "color": "bg-red-600"}]}
+
+
+func HighlighedVersesHandler(w http.ResponseWriter, r *http.Request) {
+
+	result := HighlightedVersesResponse{
+		Verses: []Verse{
+			Verse{Reference: "v43003016", Color: "bg-red-600"},
+			Verse{Reference: "v43003017", Color: "bg-violet-600"},},
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(result)
+
+}
+
+
+
 func SearchRequestHandler(w http.ResponseWriter, r *http.Request) {
 	p := r.URL.Query()
 	search := p.Get("search")
@@ -155,4 +181,3 @@ func ApiRequestHandler(w http.ResponseWriter, r *http.Request) {
 	//w.Write([]byte("</body></html>"))
 
 }
-
