@@ -100,7 +100,7 @@ async function verseLookup() {
     var extras = document.getElementById("extras").checked;
     var numbers = document.getElementById("numbers").checked;
 
-    if (verse.match(/(\d+)/)) {
+    if (verse.match(/(\d+)/) || verse === "") {
         var url = "/api?verse=" + verse + "&headings=" + headings + "&extras=" + extras + "&numbers=" + numbers;
         fetch(url)
             .then(response => response.json())
@@ -110,6 +110,36 @@ async function verseLookup() {
                 createHistory();
                 wrapText();
         });
+    } else if (verse.match(/romans road/i) || verse.match(/roman's road/i)) {
+        document.getElementById("verse").innerHTML = "<h1>The Romans Road to Salvation</h1>";
+        let verses = [
+            "Romans 3:23", 
+            "Romans 3:12", 
+            "Romans 5:10", 
+            "Romans 6:23",
+            "Romans 5:8",
+            "Romans 10:9-10",
+            "Romans 10:13",
+            "Romans 10:17"
+        ];
+        let collector = "";
+        let count = verses.length;
+        verses.forEach(verse => {
+            let url = "/api?verse=" + verse + "&headings=" + headings + "&extras=" + extras + "&numbers=" + numbers;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                collector += data.passages.join("");
+                
+                //searchHistory.add(data.query);
+                //    createHistory();
+                //    wrapText();
+                if (--count === 0) {
+                    document.getElementById("verse").innerHTML = collector;
+                }
+            });
+        });
+
     } else {
         var url = "/search?search=" + verse;
         fetch(url)
