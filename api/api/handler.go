@@ -1,7 +1,7 @@
 package api
 
 import (
-	"iamtuxmeister/bible-app/pkg/server"
+	"mr-stubblefield/bible-app/pkg/server"
 	"net/http"
 )
 
