@@ -13,7 +13,7 @@ func (s *Server) RegisterRoutes() http.Handler {
 	fileServer := http.FileServer(http.Dir("./src"))
 	r.Get("/api", ApiRequestHandler)
 	r.Get("/search", SearchRequestHandler)
-	r.Get("/highlighted-verses", HighlighedVersesHandler)
+	r.Get("/highlighted-verses", HighlightedVersesHandler)
 	r.Handle("/*", fileServer)
 
 	return r
