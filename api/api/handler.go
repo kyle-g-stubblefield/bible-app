@@ -1,7 +1,7 @@
 package api
 
 import (
-	"mr-stubblefield/bible-app/pkg/server"
+	"kyle-g-stubblefield/bible-app/pkg/server"
 	"net/http"
 )
 

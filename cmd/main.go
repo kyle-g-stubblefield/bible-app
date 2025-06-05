@@ -9,7 +9,7 @@ import (
 	"syscall"
 	"time"
 
-	"mr-stubblefield/bible-app/pkg/server"
+	"kyle-g-stubblefield/bible-app/pkg/server"
 )
 
 func gracefulShutdown(apiServer *http.Server, done chan bool) {
